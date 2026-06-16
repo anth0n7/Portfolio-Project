@@ -7,7 +7,7 @@ function Hero(){
           <p>Computer Science Student</p>
           <p>Aspiring Full-Stack Developer</p>
         </div>
-        <a className="resume-button" href="/resume.pdf" target="_blank">
+        <a className="resume-button" href="/Anthony_Thomas_Resume.pdf" target="_blank">
           Resume
         </a>
       </section>  
