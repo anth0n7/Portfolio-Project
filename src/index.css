@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit&family=PT+Mono&display=swap");
+
+:root{
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --accent: #6366f1;
+  --text: #111827;
+  --border: #e5e7eb;
+}
+
+body {
+  margin: 0;
+  font-family: "Outfit", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg);
+  color:var(--text);
+}
+
