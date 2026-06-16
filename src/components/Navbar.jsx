@@ -1,7 +1,7 @@
 function Navbar(){
     return (
         <nav>
-            <h2>Portfolio Webstie</h2>
+            <h2>Anthony Thomas</h2>
 
             <ul>
                 <li>
