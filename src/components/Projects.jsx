@@ -7,23 +7,23 @@ import ProjectCard from "./ProjectCard"
 
 function Projects(){
     
+    // To add a new project, just add another object to this array.
+    // github/demo are optional — leave them out (or "") to hide that link.
     const projects = [
         {
-            title: "Portfolio Website",
-            description: "My personal website built with React and Vite",
-            tech: ["React", "Vite", "CSS"]
-        },
-        {
-            title: "Todo App",
-            description: "Simple task manager app",
-            tech: ["JavaScript", "LocalStorage"]
+            title: "Job Search Copilot",
+            description: "A full-stack job application tracker with AI features that parse job postings, score resume-to-posting fit using embeddings, and generate tailored resume/cover letter suggestions.",
+            tech: ["React", "TypeScript", "Express", "PostgreSQL", "Claude API", "Voyager API"],
+            github: "https://github.com/anth0n7/job-search-copilot",
+            demo: "https://job-search-copilot-eta.vercel.app"
         }
+        
     ]
-    
+
     return (
         <section id="projects">
             <h2>Projects</h2>
- 
+
             <div className="project-list">
             {projects.map((project,index) => (
                 <ProjectCard
@@ -31,6 +31,8 @@ function Projects(){
                     title={project.title}
                     description={project.description}
                     tech={project.tech}
+                    github={project.github}
+                    demo={project.demo}
                 />
             ))}
             </div>

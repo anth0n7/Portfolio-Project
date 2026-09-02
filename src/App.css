@@ -97,13 +97,15 @@ h1,h2,h3,p {
 }
 
 .project-list{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
   padding: 2rem;
 }
 
 .project-card{
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -113,7 +115,8 @@ h1,h2,h3,p {
   background-color: var(--surface);
   border: 1px solid var(--border);
   transition: transform 0.2s ease;
- 
+  flex: 1 1 280px;
+  max-width: 500px;
 }
 
 .project-links{
@@ -143,6 +146,7 @@ h1,h2,h3,p {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  flex-wrap: wrap;
 
   span{
     padding: 0.5rem;
@@ -210,7 +214,6 @@ h1,h2,h3,p {
   }
 
   .project-list{
-    grid-template-columns: 1fr;
     gap: 2rem;
     padding: 1.5rem 2rem;
   }
