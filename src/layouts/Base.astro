@@ -18,7 +18,10 @@ const ogAlt = `${site.name}, ${site.role}`;
     <meta name="description" content={description} />
     <meta name="theme-color" content="#f6f6f7" />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
@@ -35,7 +38,7 @@ const ogAlt = `${site.name}, ${site.role}`;
 
     <nav aria-label="Main" class="fixed inset-x-0 top-0 z-20 border-b border-line bg-bg/80 backdrop-blur">
       <div class="mx-auto flex h-14 max-w-5xl items-center justify-between px-5 text-sm">
-        <a href="/" class="font-semibold tracking-tight" aria-label={`${site.name}, home`}>AT</a>
+        <a href="/" class="font-semibold tracking-tight" aria-label={`AT, ${site.name} home`}>AT</a>
         <div class="flex gap-5 text-muted sm:gap-6">
           <a href="/#work" class="hover:text-fg">Work</a>
           <a href="/#about" class="hover:text-fg">About</a>
