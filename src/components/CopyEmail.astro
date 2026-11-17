@@ -1,0 +1,20 @@
+---
+import { site } from '../data/site';
+const { class: className } = Astro.props;
+---
+<button type="button" class={className} data-copy-email={site.email}>Copy email</button>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-copy-email]').forEach((btn) => {
+    const label = btn.textContent;
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copyEmail!);
+        btn.textContent = 'Copied ✓';
+        setTimeout(() => (btn.textContent = label), 1600);
+      } catch {
+        btn.textContent = 'Press ⌘C on the address';
+      }
+    });
+  });
+</script>
