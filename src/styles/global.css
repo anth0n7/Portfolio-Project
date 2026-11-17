@@ -1,0 +1,45 @@
+@import "tailwindcss";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+
+/*
+ * Palette: "Porcelain & Signal Red". Every colour lives here, so a re-skin means editing this block only.
+ * --color-accent is for decoration (particles, large shapes). --color-accent-strong is for text and
+ * buttons: it is the same hue, darkened to pass WCAG AA (4.5:1) on both bg and surface.
+ */
+@theme {
+  --color-bg: #f6f6f7;
+  --color-surface: #ffffff;
+  --color-fg: #121214;
+  --color-muted: #63636b;
+  --color-line: #e2e2e6;
+  --color-accent: #e5383b;
+  --color-accent-strong: #c92a2d;
+  --color-on-accent: #ffffff;
+
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono Variable", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; color-scheme: light; }
+  body { background: var(--color-bg); color: var(--color-fg); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+  ::selection { background: color-mix(in srgb, var(--color-accent) 22%, transparent); }
+  :focus-visible { outline: 2px solid var(--color-accent-strong); outline-offset: 3px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition-duration: 0.01ms !important; } }
+}
+
+/* Hero: the plain-text name is the fallback (no JS, slow JS) and fades out once the particles are drawn. */
+.hero-text { transition: opacity 0.5s ease; }
+html[data-hero-ready] .hero-text { opacity: 0; }
+
+/* Case study body (rendered from Markdown) */
+.prose-cs { max-width: 42rem; font-size: 1.0625rem; line-height: 1.75; }
+.prose-cs > * + * { margin-top: 1.25rem; }
+.prose-cs h2 { margin-top: 3.5rem; font-size: 1.75rem; line-height: 1.2; font-weight: 600; letter-spacing: -0.02em; }
+.prose-cs h3 { margin-top: 2rem; font-size: 1.15rem; font-weight: 600; }
+.prose-cs ul { list-style: disc; padding-left: 1.25rem; }
+.prose-cs ul li + li { margin-top: 0.5rem; }
+.prose-cs strong { font-weight: 600; }
+.prose-cs a { color: var(--color-accent-strong); text-decoration: underline; text-underline-offset: 3px; }
+.prose-cs code { font-family: var(--font-mono); font-size: 0.9em; padding: 0.1em 0.35em; border: 1px solid var(--color-line); border-radius: 6px; background: var(--color-surface); }

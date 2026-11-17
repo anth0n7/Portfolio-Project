@@ -1,0 +1,57 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import ParticleName from '../components/ParticleName';
+import ProjectRow from '../components/ProjectRow.astro';
+import CopyEmail from '../components/CopyEmail.astro';
+import { site } from '../data/site';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const eyebrow = 'font-mono text-xs uppercase tracking-[.14em] text-muted';
+const btn = 'rounded-lg border border-line bg-surface px-5 py-3 hover:border-fg';
+---
+<Base>
+  <header id="top" class="relative flex h-[82svh] min-h-[520px] flex-col justify-end pb-12">
+    <!-- The real heading. It's the fallback for no-JS and screen readers, and fades out once the particles draw. -->
+    <h1 class="hero-text pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 px-5 text-center text-[clamp(3rem,11vw,9rem)] font-extrabold leading-none tracking-tight">{site.name}</h1>
+    <ParticleName client:load lines={['Anthony Thomas']} narrowLines={['Anthony', 'Thomas']} font="Geist Variable" weight={800} colors={['#121214', '#e5383b']} className="absolute inset-0 size-full" />
+    <div class="pointer-events-none relative mx-auto flex w-full max-w-5xl flex-wrap items-end justify-between gap-4 px-5">
+      <p class="max-w-md text-lg text-muted">{site.tagline}</p>
+      <p class="pointer-events-auto inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 font-mono text-xs text-muted">
+        <span class="size-1.5 rounded-full bg-emerald-600" aria-hidden="true"></span>{site.status}
+      </p>
+    </div>
+  </header>
+
+  <main id="main" class="mx-auto max-w-5xl px-5">
+    <section id="work" class="border-t border-line py-20" aria-labelledby="work-h">
+      <h2 id="work-h" class={`mb-12 ${eyebrow}`}>Selected work</h2>
+      <div class="grid gap-20">
+        {projects.map((p, i) => <ProjectRow project={p} flip={i % 2 === 1} />)}
+      </div>
+    </section>
+
+    <section id="about" class="grid gap-8 border-t border-line py-20 md:grid-cols-[1fr_2fr]" aria-labelledby="about-h">
+      <h2 id="about-h" class={eyebrow}>About</h2>
+      <div class="grid gap-5 text-lg leading-relaxed">
+        {site.about.map((t) => <p>{t}</p>)}
+        <div class="mt-2 border-t border-line pt-5 text-base">
+          <p class="font-semibold">{site.education.school}</p>
+          <p class="text-muted">{site.education.degree} · {site.education.when} · GPA {site.education.gpa}</p>
+          <p class="mt-2 text-sm text-muted">Coursework: {site.education.coursework.join(', ')}</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="border-t border-line py-24" aria-labelledby="contact-h">
+      <h2 id="contact-h" class="text-5xl font-semibold tracking-tight md:text-7xl">Let’s talk.</h2>
+      <p class="mt-4 text-lg text-muted">{site.status}. Email is the fastest way to reach me.</p>
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a href={`mailto:${site.email}`} class="rounded-lg bg-accent-strong px-5 py-3 font-medium text-on-accent hover:brightness-110">{site.email}</a>
+        <CopyEmail class={btn} />
+        <a href={site.github} target="_blank" rel="noopener noreferrer" class={btn}>GitHub ↗</a>
+        <a href={site.linkedin} target="_blank" rel="noopener noreferrer" class={btn}>LinkedIn ↗</a>
+      </div>
+    </section>
+  </main>
+</Base>
