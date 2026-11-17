@@ -5,7 +5,6 @@ order: 1
 summary: A job application tracker with three AI features. It parses postings into structured data, scores résumé fit with embeddings, and drafts résumé edits and cover letters without inventing experience.
 tech: [React, TypeScript, Express, PostgreSQL, Clerk, Claude API, Voyage AI, Tailwind CSS]
 links:
-  - { label: Live demo, href: "https://job-search-copilot-eta.vercel.app" }
   - { label: GitHub, href: "https://github.com/anth0n7/job-search-copilot" }
 cover: ../../assets/projects/jsc-Applications.png
 coverAlt: "The Applications page listing tracked applications with status badges and an add-application form"
@@ -68,4 +67,4 @@ Auth checks started out copy-pasted everywhere. Once I noticed, I moved them int
 
 ## Where it stands
 
-It's live, with real accounts and per-user data, built across 45 commits. Next on my list: automated tests, CI with GitHub Actions, caching AI responses so the same call isn't made twice, and résumé PDF upload instead of pasted text.
+It has real accounts and per-user data, and I built it across 45 commits. The hosted demo is offline while I move the back end, so the screenshots above show it running. Next on my list: automated tests, CI with GitHub Actions, caching AI responses so the same call isn't made twice, and résumé PDF upload instead of pasted text.
