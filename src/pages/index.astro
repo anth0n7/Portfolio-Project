@@ -14,7 +14,7 @@ const btn = 'rounded-lg border border-line bg-surface px-5 py-3 hover:border-fg'
   <header id="top" class="relative flex h-[82svh] min-h-[520px] flex-col justify-end pb-12">
     <!-- The real heading. It's the fallback for no-JS and screen readers, and fades out once the particles draw. -->
     <h1 class="hero-text pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 px-5 text-center text-[clamp(3rem,11vw,9rem)] font-extrabold leading-none tracking-tight">{site.name}</h1>
-    <ParticleName client:load lines={['Anthony Thomas']} narrowLines={['Anthony', 'Thomas']} font="Geist Variable" weight={800} colors={['#121214', '#e5383b']} className="absolute inset-0 size-full" />
+    <ParticleName client:idle lines={['Anthony Thomas']} narrowLines={['Anthony', 'Thomas']} font="Geist Variable" weight={800} colors={['#121214', '#e5383b']} className="absolute inset-0 size-full" />
     <div class="pointer-events-none relative mx-auto flex w-full max-w-5xl flex-wrap items-end justify-between gap-4 px-5">
       <p class="max-w-md text-lg text-muted">{site.tagline}</p>
       <p class="pointer-events-auto inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 font-mono text-xs text-muted">
