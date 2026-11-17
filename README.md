@@ -1,19 +1,41 @@
-# React + Vite
+# anthonythomas.dev
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Anthony Thomas's portfolio: a home page with a particle-name hero, plus a case study page for each project.
 
-Currently, two official plugins are available:
+**Live:** https://anthonythomas.dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Built with [Astro](https://astro.build), one React island (the hero), Tailwind CSS v4 and TypeScript. Deployed on Vercel. Why Astro: [docs/adr/0001-astro-over-nextjs.md](docs/adr/0001-astro-over-nextjs.md). Vocabulary: [GLOSSARY.md](GLOSSARY.md).
 
-## React Compiler
+## Commands
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Command | What it does |
+|---|---|
+| `npm install` | Install dependencies |
+| `npm run dev` | Dev server at http://localhost:4321 |
+| `npm run check` | Type-check everything, then run a production build |
+| `npm run preview` | Serve the production build locally (run a build first) |
 
-## Expanding the ESLint configuration
+Needs Node 22.12 or newer. Astro 6 is used because Astro 7 requires Node 22.23+.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Where things live
 
-## Site:
-https://anthonythomas.dev
+| To change… | Edit… |
+|---|---|
+| Name, tagline, status, email, links, About, Education | `src/data/site.ts` |
+| Colours | the `@theme` block in `src/styles/global.css` (every colour is defined there) |
+| A project's card or its case study | `src/content/projects/<slug>.md` (frontmatter = the card, body = the case study) |
+| The résumé | replace `public/Anthony_Thomas_Resume.pdf` |
+
+### Add a project
+
+1. Copy `src/content/projects/neetcode-tracker.md` to a new file and edit the frontmatter and body.
+2. Optional: put a screenshot in `src/assets/projects/` and point `cover` (and `gallery`) at it. Images are resized and converted to WebP at build time.
+3. `order` decides where it appears. A project with no `cover` shows a "Demo video coming soon" tile.
+
+The page, the home-page row and the "next project" link are generated automatically.
+
+## Notes
+
+- **Hero:** `src/components/ParticleName.tsx`. It respects `prefers-reduced-motion` (static dots), pauses when off-screen, and the plain-text `<h1>` stays in the page for screen readers and no-JS visitors.
+- **Accent colour:** `--color-accent` (decorative) and `--color-accent-strong` (text and buttons) are the same hue; the second is darkened to pass WCAG AA contrast.
+- Out-of-scope ideas are parked in [docs/future-ideas.md](docs/future-ideas.md).
