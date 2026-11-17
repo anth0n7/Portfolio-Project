@@ -7,7 +7,7 @@ const { project, flip = false } = Astro.props;
 const { title, kind, summary, tech, links, cover, coverAlt } = project.data;
 ---
 <article class:list={['grid items-center gap-8 md:grid-cols-2', flip && 'md:[&>*:first-child]:order-2']}>
-  <a href={`/projects/${project.id}`} class="group block" aria-label={`${title} case study`}>
+  <a href={`/projects/${project.id}`} class="group block" aria-label={cover ? `${title} case study` : `${title} case study. Demo video coming soon`}>
     {cover ? (
       <Image
         src={cover}
